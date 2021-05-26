@@ -6,8 +6,6 @@ import edu.unsj.fcefn.lcc.optimizacion.api.model.mappers.TransportCompanyMapper;
 import edu.unsj.fcefn.lcc.optimizacion.api.model.repositories.TransportCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,11 +24,12 @@ public class TransportCompaniesService {
         return transportCompanyRepository.findAll()
                 .stream() //me permite ejecutar acceciones sobre un conjunto de datos
                 .map(transportCompanyEntity -> transportCompanyMapper.entityToDTO(transportCompanyEntity))
-                .collect(Collectors.toList()); //todo lo que agarra lo compacta en una lista
+                .collect(Collectors.toList()); //all lo que agarra lo compacta en una lista
     }
 
     public TransportCompanyDTO find(Integer id){
-        return transportCompanyRepository.findById(id)
+        return transportCompanyRepository
+                .findById(id)
                 .map(transportCompanyEntity -> transportCompanyMapper.entityToDTO(transportCompanyEntity))
                 .orElse(null);
     }

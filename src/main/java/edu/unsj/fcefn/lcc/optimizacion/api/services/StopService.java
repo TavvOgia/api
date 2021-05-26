@@ -54,4 +54,14 @@ public class StopService {
             throw new Exception("Stop not found");
         }
     }
+
+    public List<StopDTO> find20()
+    {
+        return stopRepository
+                .findAll()
+                .stream()
+                .map(stopEntity -> stopMapper.entityToDTO(stopEntity))
+                .collect(Collectors.toList())
+                .subList(0,14);
+    }
 }

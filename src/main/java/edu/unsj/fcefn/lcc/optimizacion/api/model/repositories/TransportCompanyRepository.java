@@ -1,6 +1,5 @@
 package edu.unsj.fcefn.lcc.optimizacion.api.model.repositories;
 
-import edu.unsj.fcefn.lcc.optimizacion.api.model.domain.TransportCompanyDTO;
 import edu.unsj.fcefn.lcc.optimizacion.api.model.entities.TransportCompanyEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

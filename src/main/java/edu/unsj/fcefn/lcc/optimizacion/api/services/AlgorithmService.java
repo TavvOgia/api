@@ -7,8 +7,10 @@ import edu.unsj.fcefn.lcc.optimizacion.api.model.mappers.AlgorithmMapper;
 import org.moeaframework.Executor;
 import org.moeaframework.core.NondominatedPopulation;
 import org.moeaframework.core.variable.Permutation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
@@ -16,21 +18,32 @@ import java.util.stream.StreamSupport;
 @Service
 public class AlgorithmService {
 
-    private AlgorithmMapper algorithmMapper = new AlgorithmMapper();
+    @Autowired
+    StopService stopService;
 
+    @Autowired
+     FrameService frameService;
 
-    public List<StopDTO> getStops()
+    @Autowired
+     AlgorithmMapper algorithmMapper;
+
+    private List<StopDTO> stops;
+
+    private List<FrameDTO> frames;
+
+    @PostConstruct
+    private void init()
     {
+        stops = stopService.find20();
+        frames = frameService.findAll();
     }
 
     public List<FrameDTO> execute()
     {
-        List<StopDTO> stops = getStops();
-
         NondominatedPopulation population = new Executor()
                 .withAlgorithm("NSGAII") //para que siempre devuelva una poblacion no dominada, es un esquema de algoritmo
-                .withProblemClass(RoutingProblem.class) //se realiza este problema
-                .withMaxEvaluations(10000) //serán 10.000 evaluaciones
+                .withProblemClass(RoutingProblem.class, stops, frames) //se realiza este problema
+                .withMaxEvaluations(100000) //serán 100.000 evaluaciones
                 .run();
 
         return StreamSupport

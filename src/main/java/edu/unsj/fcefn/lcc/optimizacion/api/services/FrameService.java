@@ -28,10 +28,6 @@ public class FrameService {
         this.frames = this.findAll();
     }
 
-    public List<FrameDTO> getFrames(){
-        return this.frames;
-    }
-
     public List<FrameDTO> findByIdDepartureStopAndIdArrivalStop(Integer idDepartureStop, Integer idArrivalStop){
         return this.frames
                 .stream()

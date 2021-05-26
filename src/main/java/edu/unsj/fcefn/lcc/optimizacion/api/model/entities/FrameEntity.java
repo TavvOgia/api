@@ -1,10 +1,6 @@
 package edu.unsj.fcefn.lcc.optimizacion.api.model.entities;
 
-import edu.unsj.fcefn.lcc.optimizacion.api.model.domain.StopDTO;
-import edu.unsj.fcefn.lcc.optimizacion.api.model.domain.TransportCompanyDTO;
-
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.LocalTime;
 
 @Entity
@@ -17,13 +13,13 @@ public class FrameEntity {
     private Integer id;
 
     @Column(name = "id_transport_company")
-    private TransportCompanyDTO id_transport_company;
+    private Integer id_transport_company;
 
     @Column(name = "id_stop_departure")
-    private StopDTO id_stop_departure;
+    private Integer id_stop_departure;
 
     @Column(name = "id_stop_arrival")
-    private StopDTO id_stop_arrival;
+    private Integer id_stop_arrival;
 
     @Column(name = "price")
     private Float price;
@@ -45,27 +41,27 @@ public class FrameEntity {
         this.id = id;
     }
 
-    public TransportCompanyDTO getId_transport_company() {
+    public Integer getId_transport_company() {
         return id_transport_company;
     }
 
-    public void setId_transport_company(TransportCompanyDTO id_transport_company) {
+    public void setId_transport_company(Integer id_transport_company) {
         this.id_transport_company = id_transport_company;
     }
 
-    public StopDTO getId_stop_departure() {
+    public Integer getId_stop_departure() {
         return id_stop_departure;
     }
 
-    public void setId_stop_departure(StopDTO id_stop_departure) {
+    public void setId_stop_departure(Integer id_stop_departure) {
         this.id_stop_departure = id_stop_departure;
     }
 
-    public StopDTO getId_stop_arrival() {
+    public Integer getId_stop_arrival() {
         return id_stop_arrival;
     }
 
-    public void setId_stop_arrival(StopDTO id_stop_arrival) {
+    public void setId_stop_arrival(Integer id_stop_arrival) {
         this.id_stop_arrival = id_stop_arrival;
     }
 

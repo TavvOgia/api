@@ -1,7 +1,5 @@
 package edu.unsj.fcefn.lcc.optimizacion.api.model.domain;
 
-import javax.persistence.Column;
-
 public class StopDTO {
     private Integer id;
     private String name;
